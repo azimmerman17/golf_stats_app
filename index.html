@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<!-- <meta name="viewport" content="width=device-width"> -->
+	<title>Strokes Gained</title>
+	<link href="styles.css" rel="stylesheet">
+  </head>
+  <body>
+    
+	<h1>Golf Scorecard and Strokes Gained Calculator</h1>
+    <!-- <h3>Add links to other pages</h3> -->
+    <!-- <h3>How to use page</h3> -->
+    <p>Enter the starting distance and loction for each shot.  Use feet for putts and yards for all other shots.  
+    <br>Entering 0 as the distance will assume the ball was privoulsly holed and the shot will not count.
+    <br>Penalty shots do not require a distance.
+    <br>The more accurate the data you record, the more accurate the data you will recieve. 
+    </p>
+    <p>For more information of strokes gained, check out this article from the <a href="https://www.pgatour.com/news/2016/05/31/strokes-gained-defined.html" target="_blank">PGA Tour</a></p>
+    <div class="front9">
+        <table class="front9tbl">
+            <thead class="front9Holes">
+                <tr class="hole">
+                    <th></th>
+                    <th colspan="2">Hole 1</th>
+                    <th colspan="2">Hole 2</th>
+                    <th colspan="2">Hole 3</th>
+                    <th colspan="2">Hole 4</th>
+                    <th colspan="2">Hole 5</th>
+                    <th colspan="2">Hole 6</th>
+                    <th colspan="2">Hole 7</th>
+                    <th colspan="2">Hole 8</th>
+                    <th colspan="2">Hole 9</th>
+                    <th class="sideTotal">OUT</th>
+                </tr>
+                <tr class="par">
+                    <th>Par</th>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole1Par" name="hole1Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole2Par" name="hole2Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole3Par" name="hole3Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole4Par" name="hole4Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole5Par" name="hole5Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole6Par" name="hole6Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole7Par" name="hole7Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole8Par" name="hole8Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole9Par" name="hole9Par"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+            </thead>
+            <tbody class="front9shots">
+                <tr class="shot1">
+                    <th>Shot 1</th>
+                    <td class="yard" id="h1S1Yard"><input class="input-shot" type="number" id="h1S1" name="hole1Shot1"></td>
+                    <td class="lie" id="h1S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h2S1Yard"><input class="input-shot" type="number" id="h2S1" name="hole2Shot1"></td>
+                    <td class="lie" id="h2S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h3S1Yard"><input class="input-shot" type="number" id="h3S1" name="hole3Shot1"></td>
+                    <td class="lie" id="h3S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h4S1Yard"><input class="input-shot" type="number" id="h4S1" name="hole4Shot1"></td>
+                    <td class="lie" id="h4S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h5S1Yard"><input class="input-shot" type="number" id="h5S1" name="hole5Shot1"></td>
+                    <td class="lie" id="h5S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h6S1Yard"><input class="input-shot" type="number" id="h6S1" name="hole6Shot1"></td>
+                    <td class="lie" id="h6S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h7S1Yard"><input class="input-shot" type="number" id="h7S1" name="hole7Shot1"></td>
+                    <td class="lie" id="h7S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h8S1Yard"><input class="input-shot" type="number" id="h8S1" name="hole8Shot1"></td>
+                    <td class="lie" id="h8S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h9S1Yard"><input class="input-shot" type="number" id="h9S1" name="hole9Shot1"></td>
+                    <td class="lie" id="h9S1Lie" value="t">Tee</td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="shot2">
+                    <th>Shot 2</th>
+                    <td class="yard" id="h1S2Yard"><input class="input-shot" type="number" id="h1S2" name="hole1shot2"></td>
+                    <td class="lie" id="h1S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S2Yard"><input class="input-shot" type="number" id="h2S2" name="hole2shot2"></td>
+                    <td class="lie" id="h2S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S2Yard"><input class="input-shot" type="number" id="h3S2" name="hole3shot2"></td>
+                    <td class="lie" id="h3S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S2Yard"><input class="input-shot" type="number" id="h4S2" name="hole4shot2"></td>
+                    <td class="lie" id="h4S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S2Yard"><input class="input-shot" type="number" id="h5S2" name="hole5shot2"></td>
+                    <td class="lie" id="h5S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S2Yard"><input class="input-shot" type="number" id="h6S2" name="hole6shot2"></td>
+                    <td class="lie" id="h6S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S2Yard"><input class="input-shot" type="number" id="h7S2" name="hole7shot2"></td>
+                    <td class="lie" id="h7S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S2Yard"><input class="input-shot" type="number" id="h8S2" name="hole8shot2"></td>
+                    <td class="lie" id="h8S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S2Yard"><input class="input-shot" type="number" id="h9S2" name="hole9shot2"></td>
+                    <td class="lie" id="h9S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="Shot3">
+                    <th>Shot 3</th>
+                    <td class="yard" id="h1S3Yard"><input class="input-shot" type="number" id="h1S3" name="hole1shot3"></td>
+                    <td class="lie" id="h1S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S3Yard"><input class="input-shot" type="number" id="h2S3" name="hole2shot3"></td>
+                    <td class="lie" id="h2S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S3Yard"><input class="input-shot" type="number" id="h3S3" name="hole3shot3"></td>
+                    <td class="lie" id="h3S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S3Yard"><input class="input-shot" type="number" id="h4S3" name="hole4shot3"></td>
+                    <td class="lie" id="h4S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S3Yard"><input class="input-shot" type="number" id="h5S3" name="hole5shot3"></td>
+                    <td class="lie" id="h5S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S3Yard"><input class="input-shot" type="number" id="h6S3" name="hole6shot3"></td>
+                    <td class="lie" id="h6S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S3Yard"><input class="input-shot" type="number" id="h7S3" name="hole7shot3"></td>
+                    <td class="lie" id="h7S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S3Yard"><input class="input-shot" type="number" id="h8S3" name="hole8shot3"></td>
+                    <td class="lie" id="h8S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S3Yard"><input class="input-shot" type="number" id="h9S3" name="hole9shot3"></td>
+                    <td class="lie" id="h9S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="Shot4">
+                    <th>Shot 4</th>
+                    <td class="yard" id="h1S4Yard"><input class="input-shot" type="number" id="h1S4" name="hole1shot4"></td>
+                    <td class="lie" id="h1S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S4Yard"><input class="input-shot" type="number" id="h2S4" name="hole2shot4"></td>
+                    <td class="lie" id="h2S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S4Yard"><input class="input-shot" type="number" id="h3S4" name="hole3shot4"></td>
+                    <td class="lie" id="h3S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S4Yard"><input class="input-shot" type="number" id="h4S4" name="hole4shot4"></td>
+                    <td class="lie" id="h4S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S4Yard"><input class="input-shot" type="number" id="h5S4" name="hole5shot4"></td>
+                    <td class="lie" id="h5S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S4Yard"><input class="input-shot" type="number" id="h6S4" name="hole6shot4"></td>
+                    <td class="lie" id="h6S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S4Yard"><input class="input-shot" type="number" id="h7S4" name="hole7shot4"></td>
+                    <td class="lie" id="h7S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S4Yard"><input class="input-shot" type="number" id="h8S4" name="hole8shot4"></td>
+                    <td class="lie" id="h8S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S4Yard"><input class="input-shot" type="number" id="h9S4" name="hole9shot4"></td>
+                    <td class="lie" id="h9S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="Shot5">
+                    <th>Shot 5</th>
+                    <td class="yard" id="h1S5Yard"><input class="input-shot" type="number" id="h1S5" name="hole1shot5"></td>
+                    <td class="lie" id="h1S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S5Yard"><input class="input-shot" type="number" id="h2S5" name="hole2shot5"></td>
+                    <td class="lie" id="h2S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S5Yard"><input class="input-shot" type="number" id="h3S5" name="hole3shot5"></td>
+                    <td class="lie" id="h3S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S5Yard"><input class="input-shot" type="number" id="h4S5" name="hole4shot5"></td>
+                    <td class="lie" id="h4S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S3Yard"><input class="input-shot" type="number" id="h5S3" name="hole5shot3"></td>
+                    <td class="lie" id="h5S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S5Yard"><input class="input-shot" type="number" id="h6S5" name="hole6shot5"></td>
+                    <td class="lie" id="h6S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S5Yard"><input class="input-shot" type="number" id="h7S5" name="hole7shot5"></td>
+                    <td class="lie" id="h7S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S5Yard"><input class="input-shot" type="number" id="h8S5" name="hole8shot5"></td>
+                    <td class="lie" id="h8S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S5Yard"><input class="input-shot" type="number" id="h9S5" name="hole9shot5"></td>
+                    <td class="lie" id="h9S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="Shot6">
+                    <th>Shot 6</th>
+                    <td class="yard" id="h1S6Yard"><input class="input-shot" type="number" id="h1S6" name="hole1shot6"></td>
+                    <td class="lie" id="h1S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S6Yard"><input class="input-shot" type="number" id="h2S6" name="hole2shot6"></td>
+                    <td class="lie" id="h2S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S6Yard"><input class="input-shot" type="number" id="h3S6" name="hole3shot6"></td>
+                    <td class="lie" id="h3S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S6Yard"><input class="input-shot" type="number" id="h4S6" name="hole4shot6"></td>
+                    <td class="lie" id="h4S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S6Yard"><input class="input-shot" type="number" id="h5S6" name="hole5shot6"></td>
+                    <td class="lie" id="h5S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S6Yard"><input class="input-shot" type="number" id="h6S6" name="hole6shot6"></td>
+                    <td class="lie" id="h6S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S6Yard"><input class="input-shot" type="number" id="h7S6" name="hole7shot6"></td>
+                    <td class="lie" id="h7S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S6Yard"><input class="input-shot" type="number" id="h8S6" name="hole8shot6"></td>
+                    <td class="lie" id="h8S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S6Yard"><input class="input-shot" type="number" id="h9S6" name="hole9shot6"></td>
+                    <td class="lie" id="h9S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="Shot7">
+                    <th>Shot 7</th>
+                    <td class="yard" id="h1S7Yard"><input class="input-shot" type="number" id="h1S7" name="hole1shot7"></td>
+                    <td class="lie" id="h1S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S7Yard"><input class="input-shot" type="number" id="h2S7" name="hole2shot7"></td>
+                    <td class="lie" id="h2S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S7Yard"><input class="input-shot" type="number" id="h3S7" name="hole3shot7"></td>
+                    <td class="lie" id="h3S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S7Yard"><input class="input-shot" type="number" id="h4S7" name="hole4shot7"></td>
+                    <td class="lie" id="h4S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S7Yard"><input class="input-shot" type="number" id="h5S7" name="hole5shot7"></td>
+                    <td class="lie" id="h5S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S7Yard"><input class="input-shot" type="number" id="h6S7" name="hole6shot7"></td>
+                    <td class="lie" id="h6S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S7Yard"><input class="input-shot" type="number" id="h7S7" name="hole7shot7"></td>
+                    <td class="lie" id="h7S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S7Yard"><input class="input-shot" type="number" id="h8S7" name="hole8shot7"></td>
+                    <td class="lie" id="h8S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S7Yard"><input class="input-shot" type="number" id="h9S7" name="hole9shot7"></td>
+                    <td class="lie" id="h9S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>                
+                </tr>
+                <tr class="Shot8">
+                    <th>Shot 8</th>
+                    <td class="yard" id="h1S8Yard"><input class="input-shot" type="number" id="h1S8" name="hole1shot8"></td>
+                    <td class="lie" id="h1S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S8Yard"><input class="input-shot" type="number" id="h2S8" name="hole2shot8"></td>
+                    <td class="lie" id="h2S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S8Yard"><input class="input-shot" type="number" id="h3S8" name="hole3shot8"></td>
+                    <td class="lie" id="h3S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S8Yard"><input class="input-shot" type="number" id="h4S8" name="hole4shot8"></td>
+                    <td class="lie" id="h4S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S8Yard"><input class="input-shot" type="number" id="h5S8" name="hole5shot8"></td>
+                    <td class="lie" id="h5S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S8Yard"><input class="input-shot" type="number" id="h6S8" name="hole6shot8"></td>
+                    <td class="lie" id="h6S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S8Yard"><input class="input-shot" type="number" id="h7S8" name="hole7shot8"></td>
+                    <td class="lie" id="h7S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S8Yard"><input class="input-shot" type="number" id="h8S8" name="hole8shot8"></td>
+                    <td class="lie" id="h8S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S8Yard"><input class="input-shot" type="number" id="h9S8" name="hole9shot8"></td>
+                    <td class="lie" id="h9S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                    <th>Shot 9</th>
+                    <td class="yard" id="h1S9Yard"><input class="input-shot" type="number" id="h1S9" name="hole1shot9"></td>
+                    <td class="lie" id="h1S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S9Yard"><input class="input-shot" type="number" id="h2S9" name="hole2shot9"></td>
+                    <td class="lie" id="h2S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S9Yard"><input class="input-shot" type="number" id="h3S9" name="hole3shot9"></td>
+                    <td class="lie" id="h3S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S9Yard"><input class="input-shot" type="number" id="h4S9" name="hole4shot9"></td>
+                    <td class="lie" id="h4S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S9Yard"><input class="input-shot" type="number" id="h5S9" name="hole5shot9"></td>
+                    <td class="lie" id="h5S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S9Yard"><input class="input-shot" type="number" id="h6S9" name="hole6shot9"></td>
+                    <td class="lie" id="h6S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S9Yard"><input class="input-shot" type="number" id="h7S9" name="hole7shot9"></td>
+                    <td class="lie" id="h7S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S9Yard"><input class="input-shot" type="number" id="h8S9" name="hole8shot9"></td>
+                    <td class="lie" id="h8S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S9Yard"><input class="input-shot" type="number" id="h9S9" name="hole9shot9"></td>
+                    <td class="lie" id="h9S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="Shot10">
+                    <th>Shot 10</th>
+                    <td class="yard" id="h1S10Yard"><input class="input-shot" type="number" id="h1S10" name="hole1shot10"></td>
+                    <td class="lie" id="h1S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h2S10Yard"><input class="input-shot" type="number" id="h2S10" name="hole2shot10"></td>
+                    <td class="lie" id="h2S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h3S10Yard"><input class="input-shot" type="number" id="h3S10" name="hole3shot10"></td>
+                    <td class="lie" id="h3S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h4S10Yard"><input class="input-shot" type="number" id="h4S10" name="hole4shot10"></td>
+                    <td class="lie" id="h4S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h5S10Yard"><input class="input-shot" type="number" id="h5S10" name="hole5shot10"></td>
+                    <td class="lie" id="h5S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h6S10Yard"><input class="input-shot" type="number" id="h6S10" name="hole6shot10"></td>
+                    <td class="lie" id="h6S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h7S10Yard"><input class="input-shot" type="number" id="h7S10" name="hole7shot10"></td>
+                    <td class="lie" id="h7S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h8S10Yard"><input class="input-shot" type="number" id="h8S10" name="hole8shot10"></td>
+                    <td class="lie" id="h8S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="yard" id="h9S10Yard"><input class="input-shot" type="number" id="h9S10" name="hole9shot10"></td>
+                    <td class="lie" id="h9S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="sideTotal"></td>
+                </tr>
+            </tbody>
+            <!-- <tbody class="addNext">
+                <tr class="button">
+                    <th></th>
+                    <td><button class="add" id="hole1Add">+</button></td>
+                    <td><button class="next" id="hole1Next">>>></button></td>
+                    <td><button class="add" id="hole2Add">+</button></td>
+                    <td><button class="next" id="hole2Next">>>></button></td>
+                    <td><button class="add" id="hole3Add">+</button></td>
+                    <td><button class="next" id="hole3Next">>>></button></td>
+                    <td><button class="add" id="hole4Add">+</button></td>
+                    <td><button class="next" id="hole4Next">>>></button></td>
+                    <td><button class="add" id="hole5Add">+</button></td>
+                    <td><button class="next" id="hole5Next">>>></button></td>
+                    <td><button class="add" id="hole6Add">+</button></td>
+                    <td><button class="next" id="hole6Next">>>></button></td>
+                    <td><button class="add" id="hole7Add">+</button></td>
+                    <td><button class="next" id="hole7Next">>>></button></td>
+                    <td><button class="add" id="hole8Add">+</button></td>
+                    <td><button class="next" id="hole8Next">>>></button></td>
+                    <td><button class="add" id="hole9Add">+</button></td>
+                    <td><button class="next" id="hole9Next">>>></button></td>
+                    <td class="sideTotal"></td>
+                </tr>
+            </tbody> -->
+            <tbody class="front9Stats">
+                <tr class="score">
+                    <th>Score</th>
+                    <td id="hole1Score" colspan="2"></td>
+                    <td id="hole2Score" colspan="2"></td>
+                    <td id="hole3Score" colspan="2"></td>
+                    <td id="hole4Score" colspan="2"></td>
+                    <td id="hole5Score" colspan="2"></td>
+                    <td id="hole6Score" colspan="2"></td>
+                    <td id="hole7Score" colspan="2"></td>
+                    <td id="hole8Score" colspan="2"></td>
+                    <td id="hole9Score" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="vsPar">
+                    <th>+/-</th>
+                    <td id="vsParHole1" colspan="2"></td>
+                    <td id="vsParHole2" colspan="2"></td>
+                    <td id="vsParHole3" colspan="2"></td>
+                    <td id="vsParHole4" colspan="2"></td>
+                    <td id="vsParHole5" colspan="2"></td>
+                    <td id="vsParHole6" colspan="2"></td>
+                    <td id="vsParHole7" colspan="2"></td>
+                    <td id="vsParHole8" colspan="2"></td>
+                    <td id="vsParHole9" colspan="2"></td>
+                    <td id="vsParHoleOut" colspan="2"></td>
+
+                </tr>
+                <tr class="expdScore">
+                    <th>Expected Score</th>
+                    <td id="expdScoreHole1" colspan="2"></td>
+                    <td id="expdScoreHole2" colspan="2"></td>
+                    <td id="expdScoreHole3" colspan="2"></td>
+                    <td id="expdScoreHole4" colspan="2"></td>
+                    <td id="expdScoreHole5" colspan="2"></td>
+                    <td id="expdScoreHole6" colspan="2"></td>
+                    <td id="expdScoreHole7" colspan="2"></td>
+                    <td id="expdScoreHole8" colspan="2"></td>
+                    <td id="expdScoreHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="sg">
+                    <th id="sgHead">Strokes Gained</th>
+                    <td id="sgHole1" colspan="2"></td>
+                    <td id="sgHole2" colspan="2"></td>
+                    <td id="sgHole3" colspan="2"></td>
+                    <td id="sgHole4" colspan="2"></td>
+                    <td id="sgHole5" colspan="2"></td>
+                    <td id="sgHole6" colspan="2"></td>
+                    <td id="sgHole7" colspan="2"></td>
+                    <td id="sgHole8" colspan="2"></td>
+                    <td id="sgHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="fwy">
+                    <th>FWY</th>
+                    <td id="fwyHole1" colspan="2"></td>
+                    <td id="fwyHole2" colspan="2"></td>
+                    <td id="fwyHole3" colspan="2"></td>
+                    <td id="fwyHole4" colspan="2"></td>
+                    <td id="fwyHole5" colspan="2"></td>
+                    <td id="fwyHole6" colspan="2"></td>
+                    <td id="fwyHole7" colspan="2"></td>
+                    <td id="fwyHole8" colspan="2"></td>
+                    <td id="fwyHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="gir">
+                    <th>GIR</th>
+                    <td id="girHole1" colspan="2"></td>
+                    <td id="girHole2" colspan="2"></td>
+                    <td id="girHole3" colspan="2"></td>
+                    <td id="girHole4" colspan="2"></td>
+                    <td id="girHole5" colspan="2"></td>
+                    <td id="girHole6" colspan="2"></td>
+                    <td id="girHole7" colspan="2"></td>
+                    <td id="girHole8" colspan="2"></td>
+                    <td id="girHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+                <tr class="nGir">
+                    <!-- <th>nGIR</th>
+                    <td id="nGirHole1" colspan="2"></td>
+                    <td id="nGirHole2" colspan="2"></td>
+                    <td id="nGirHole3" colspan="2"></td>
+                    <td id="nGirHole4" colspan="2"></td>
+                    <td id="nGirHole5" colspan="2"></td>
+                    <td id="nGirHole6" colspan="2"></td>
+                    <td id="nGirHole7" colspan="2"></td>
+                    <td id="nGirHole8" colspan="2"></td>
+                    <td id="nGirHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr> -->
+                <tr class="putts">
+                    <th>Putts</th>
+                    <td id="puttsHole1" colspan="2"></td>
+                    <td id="puttsHole2" colspan="2"></td>
+                    <td id="puttsHole3" colspan="2"></td>
+                    <td id="puttsHole4" colspan="2"></td>
+                    <td id="puttsHole5" colspan="2"></td>
+                    <td id="puttsHole6" colspan="2"></td>
+                    <td id="puttsHole7" colspan="2"></td>
+                    <td id="puttsHole8" colspan="2"></td>
+                    <td id="puttsHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <hr>
+    <div class="back9">
+        <table class="back9tbl">
+            <thead class="back9Holes">
+                <tr class="hole">
+                    <th id="blankBack9Hole"></th>
+                    <th colspan="2">Hole 10</th>
+                    <th colspan="2">Hole 11</th>
+                    <th colspan="2">Hole 12</th>
+                    <th colspan="2">Hole 13</th>
+                    <th colspan="2">Hole 14</th>
+                    <th colspan="2">Hole 15</th>
+                    <th colspan="2">Hole 16</th>
+                    <th colspan="2">Hole 17</th>
+                    <th colspan="2">Hole 18</th>
+                    <th class="sideTotal">IN</th>
+                    <th class="total">TOTAL</th>
+                </tr>
+                <tr class="par">
+                    <th>Par</th>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole10Par" name="hole10Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole11Par" name="hole11Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole12Par" name="hole12Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole13Par" name="hole13Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole14Par" name="hole14Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole15Par" name="hole15Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole16Par" name="hole16Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole17Par" name="hole17Par"></td>
+                    <td colspan="2"><input class="inputPar" type="number" id="hole18Par" name="hole18Par"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+            </thead>
+            <tbody class="back9shots">
+                <tr class="shot1">
+                    <th>Shot 1</th>
+                    <td class="yard" id="h10S1Yard"><input class="input-shot" type="number" id="h10S1" name="hole10Shot1"></td>
+                    <td class="lie" id="h10S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h11S1Yard"><input class="input-shot" type="number" id="h11S1" name="hole11Shot1"></td>
+                    <td class="lie" id="h11S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h12S1Yard"><input class="input-shot" type="number" id="h12S1" name="hole12Shot1"></td>
+                    <td class="lie" id="h12S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h13S1Yard"><input class="input-shot" type="number" id="h13S1" name="hole13Shot1"></td>
+                    <td class="lie" id="h13S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h14S1Yard"><input class="input-shot" type="number" id="h14S1" name="hole14Shot1"></td>
+                    <td class="lie" id="h14S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h15S1Yard"><input class="input-shot" type="number" id="h15S1" name="hole15Shot1"></td>
+                    <td class="lie" id="h15S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h16S1Yard"><input class="input-shot" type="number" id="h16S1" name="hole16Shot1"></td>
+                    <td class="lie" id="h16S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h17S1Yard"><input class="input-shot" type="number" id="h17S1" name="hole17Shot1"></td>
+                    <td class="lie" id="h17S1Lie" value="t">Tee</td>
+                    <td class="yard" id="h18S1Yard"><input class="input-shot" type="number" id="h18S1" name="hole18Shot1"></td>
+                    <td class="lie" id="h18S1Lie" value="t">Tee</td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="shot2">
+                    <th>Shot 2</th>
+                    <td class="yard" id="h10S2Yard"><input class="input-shot" type="number" id="h10S2" name="hole10shot2"></td>
+                    <td class="lie" id="h10S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S2Yard"><input class="input-shot" type="number" id="h11S2" name="hole11shot2"></td>
+                    <td class="lie" id="h11S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S2Yard"><input class="input-shot" type="number" id="h12S2" name="hole12shot2"></td>
+                    <td class="lie" id="h12S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S2Yard"><input class="input-shot" type="number" id="h13S2" name="hole13shot2"></td>
+                    <td class="lie" id="h13S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S2Yard"><input class="input-shot" type="number" id="h14S2" name="hole14shot2"></td>
+                    <td class="lie" id="h14S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S2Yard"><input class="input-shot" type="number" id="h15S2" name="hole15shot2"></td>
+                    <td class="lie" id="h15S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S2Yard"><input class="input-shot" type="number" id="h16S2" name="hole16shot2"></td>
+                    <td class="lie" id="h16S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S2Yard"><input class="input-shot" type="number" id="h17S2" name="hole17shot2"></td>
+                    <td class="lie" id="h17S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S2Yard"><input class="input-shot" type="number" id="h18S2" name="hole18shot2"></td>
+                    <td class="lie" id="h18S2Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="Shot3">
+                    <th>Shot 3</th>
+                    <td class="yard" id="h10S3Yard"><input class="input-shot" type="number" id="h10S3" name="hole10shot3"></td>
+                    <td class="lie" id="h10S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S3Yard"><input class="input-shot" type="number" id="h11S3" name="hole11shot3"></td>
+                    <td class="lie" id="h11S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S3Yard"><input class="input-shot" type="number" id="h12S3" name="hole12shot3"></td>
+                    <td class="lie" id="h12S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S3Yard"><input class="input-shot" type="number" id="h13S3" name="hole13shot3"></td>
+                    <td class="lie" id="h13S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S3Yard"><input class="input-shot" type="number" id="h14S3" name="hole14shot3"></td>
+                    <td class="lie" id="h14S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S3Yard"><input class="input-shot" type="number" id="h15S3" name="hole15shot3"></td>
+                    <td class="lie" id="h15S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S3Yard"><input class="input-shot" type="number" id="h16S3" name="hole16shot3"></td>
+                    <td class="lie" id="h16S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S3Yard"><input class="input-shot" type="number" id="h17S3" name="hole17shot3"></td>
+                    <td class="lie" id="h17S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S3Yard"><input class="input-shot" type="number" id="h18S3" name="hole18shot3"></td>
+                    <td class="lie" id="h18S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="Shot4">
+                    <th>Shot 4</th>
+                    <td class="yard" id="h10S4Yard"><input class="input-shot" type="number" id="h10S4" name="hole10shot4"></td>
+                    <td class="lie" id="h10S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S4Yard"><input class="input-shot" type="number" id="h11S4" name="hole11shot4"></td>
+                    <td class="lie" id="h11S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S4Yard"><input class="input-shot" type="number" id="h12S4" name="hole12shot4"></td>
+                    <td class="lie" id="h12S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S4Yard"><input class="input-shot" type="number" id="h13S4" name="hole13shot4"></td>
+                    <td class="lie" id="h13S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S4Yard"><input class="input-shot" type="number" id="h14S4" name="hole14shot4"></td>
+                    <td class="lie" id="h14S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S4Yard"><input class="input-shot" type="number" id="h15S4" name="hole15shot4"></td>
+                    <td class="lie" id="h15S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S4Yard"><input class="input-shot" type="number" id="h16S4" name="hole16shot4"></td>
+                    <td class="lie" id="h16S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S4Yard"><input class="input-shot" type="number" id="h17S4" name="hole17shot4"></td>
+                    <td class="lie" id="h17S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S4Yard"><input class="input-shot" type="number" id="h18S4" name="hole18shot4"></td>
+                    <td class="lie" id="h18S4Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="Shot5">
+                    <th>Shot 5</th>
+                    <td class="yard" id="h10S5Yard"><input class="input-shot" type="number" id="h10S5" name="hole10shot5"></td>
+                    <td class="lie" id="h10S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S5Yard"><input class="input-shot" type="number" id="h11S5" name="hole11shot5"></td>
+                    <td class="lie" id="h11S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S5Yard"><input class="input-shot" type="number" id="h12S5" name="hole12shot5"></td>
+                    <td class="lie" id="h12S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S5Yard"><input class="input-shot" type="number" id="h13S5" name="hole13shot5"></td>
+                    <td class="lie" id="h13S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S5Yard"><input class="input-shot" type="number" id="h14S5" name="hole14shot5"></td>
+                    <td class="lie" id="h14S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S3Yard"><input class="input-shot" type="number" id="h15S3" name="hole15shot3"></td>
+                    <td class="lie" id="h15S3Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S5Yard"><input class="input-shot" type="number" id="h16S5" name="hole16shot5"></td>
+                    <td class="lie" id="h16S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S5Yard"><input class="input-shot" type="number" id="h17S5" name="hole17shot5"></td>
+                    <td class="lie" id="h17S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S5Yard"><input class="input-shot" type="number" id="h18S5" name="hole18shot5"></td>
+                    <td class="lie" id="h18S5Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="Shot6">
+                    <th>Shot 6</th>
+                    <td class="yard" id="h10S6Yard"><input class="input-shot" type="number" id="h10S6" name="hole10shot6"></td>
+                    <td class="lie" id="h10S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S6Yard"><input class="input-shot" type="number" id="h11S6" name="hole11shot6"></td>
+                    <td class="lie" id="h11S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S6Yard"><input class="input-shot" type="number" id="h12S6" name="hole12shot6"></td>
+                    <td class="lie" id="h12S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S6Yard"><input class="input-shot" type="number" id="h13S6" name="hole13shot6"></td>
+                    <td class="lie" id="h13S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S6Yard"><input class="input-shot" type="number" id="h14S6" name="hole14shot6"></td>
+                    <td class="lie" id="h14S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S6Yard"><input class="input-shot" type="number" id="h15S6" name="hole15shot6"></td>
+                    <td class="lie" id="h15S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S6Yard"><input class="input-shot" type="number" id="h16S6" name="hole16shot6"></td>
+                    <td class="lie" id="h16S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S6Yard"><input class="input-shot" type="number" id="h17S6" name="hole17shot6"></td>
+                    <td class="lie" id="h17S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S6Yard"><input class="input-shot" type="number" id="h18S6" name="hole18shot6"></td>
+                    <td class="lie" id="h18S6Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="Shot7">
+                    <th>Shot 7</th>
+                    <td class="yard" id="h10S7Yard"><input class="input-shot" type="number" id="h10S7" name="hole10shot7"></td>
+                    <td class="lie" id="h10S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S7Yard"><input class="input-shot" type="number" id="h11S7" name="hole11shot7"></td>
+                    <td class="lie" id="h11S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S7Yard"><input class="input-shot" type="number" id="h12S7" name="hole12shot7"></td>
+                    <td class="lie" id="h12S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S7Yard"><input class="input-shot" type="number" id="h13S7" name="hole13shot7"></td>
+                    <td class="lie" id="h13S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S7Yard"><input class="input-shot" type="number" id="h14S7" name="hole14shot7"></td>
+                    <td class="lie" id="h14S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S7Yard"><input class="input-shot" type="number" id="h15S7" name="hole15shot7"></td>
+                    <td class="lie" id="h15S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S7Yard"><input class="input-shot" type="number" id="h16S7" name="hole16shot7"></td>
+                    <td class="lie" id="h16S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S7Yard"><input class="input-shot" type="number" id="h17S7" name="hole17shot7"></td>
+                    <td class="lie" id="h17S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S7Yard"><input class="input-shot" type="number" id="h18S7" name="hole18shot7"></td>
+                    <td class="lie" id="h18S7Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>     
+                    <td class="total"></td>           
+                </tr>
+                <tr class="Shot8">
+                    <th>Shot 8</th>
+                    <td class="yard" id="h10S8Yard"><input class="input-shot" type="number" id="h10S8" name="hole10shot8"></td>
+                    <td class="lie" id="h10S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S8Yard"><input class="input-shot" type="number" id="h11S8" name="hole11shot8"></td>
+                    <td class="lie" id="h11S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S8Yard"><input class="input-shot" type="number" id="h12S8" name="hole12shot8"></td>
+                    <td class="lie" id="h12S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S8Yard"><input class="input-shot" type="number" id="h13S8" name="hole13shot8"></td>
+                    <td class="lie" id="h13S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S8Yard"><input class="input-shot" type="number" id="h14S8" name="hole14shot8"></td>
+                    <td class="lie" id="h14S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S8Yard"><input class="input-shot" type="number" id="h15S8" name="hole15shot8"></td>
+                    <td class="lie" id="h15S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S8Yard"><input class="input-shot" type="number" id="h16S8" name="hole16shot8"></td>
+                    <td class="lie" id="h16S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S8Yard"><input class="input-shot" type="number" id="h17S8" name="hole17shot8"></td>
+                    <td class="lie" id="h17S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S8Yard"><input class="input-shot" type="number" id="h18S8" name="hole18shot8"></td>
+                    <td class="lie" id="h18S8Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                    <th>Shot 9</th>
+                    <td class="yard" id="h10S9Yard"><input class="input-shot" type="number" id="h10S9" name="hole10shot9"></td>
+                    <td class="lie" id="h10S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S9Yard"><input class="input-shot" type="number" id="h11S9" name="hole11shot9"></td>
+                    <td class="lie" id="h11S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S9Yard"><input class="input-shot" type="number" id="h12S9" name="hole12shot9"></td>
+                    <td class="lie" id="h12S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S9Yard"><input class="input-shot" type="number" id="h13S9" name="hole13shot9"></td>
+                    <td class="lie" id="h13S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S9Yard"><input class="input-shot" type="number" id="h14S9" name="hole14shot9"></td>
+                    <td class="lie" id="h14S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S9Yard"><input class="input-shot" type="number" id="h15S9" name="hole15shot9"></td>
+                    <td class="lie" id="h15S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S9Yard"><input class="input-shot" type="number" id="h16S9" name="hole16shot9"></td>
+                    <td class="lie" id="h16S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S9Yard"><input class="input-shot" type="number" id="h17S9" name="hole17shot9"></td>
+                    <td class="lie" id="h17S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S9Yard"><input class="input-shot" type="number" id="h18S9" name="hole18shot9"></td>
+                    <td class="lie" id="h18S9Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>    
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="Shot10">
+                    <th>Shot 10</th>
+                    <td class="yard" id="h10S10Yard"><input class="input-shot" type="number" id="h10S10" name="hole10shot10"></td>
+                    <td class="lie" id="h10S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h11S10Yard"><input class="input-shot" type="number" id="h11S10" name="hole11shot10"></td>
+                    <td class="lie" id="h11S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h12S10Yard"><input class="input-shot" type="number" id="h12S10" name="hole12shot10"></td>
+                    <td class="lie" id="h12S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h13S10Yard"><input class="input-shot" type="number" id="h13S10" name="hole13shot10"></td>
+                    <td class="lie" id="h13S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h14S10Yard"><input class="input-shot" type="number" id="h14S10" name="hole14shot10"></td>
+                    <td class="lie" id="h14S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h15S10Yard"><input class="input-shot" type="number" id="h15S10" name="hole15shot10"></td>
+                    <td class="lie" id="h15S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h16S10Yard"><input class="input-shot" type="number" id="h16S10" name="hole16shot10"></td>
+                    <td class="lie" id="h16S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h17S10Yard"><input class="input-shot" type="number" id="h17S10" name="hole17shot10"></td>
+                    <td class="lie" id="h17S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>
+                    <td class="yard" id="h18S10Yard"><input class="input-shot" type="number" id="h18S10" name="hole18shot10"></td>
+                    <td class="lie" id="h18S10Lie"><select id="startLie">
+                        <option value="null">--</option>
+                        <option value="t">Tee</option>
+                        <option value="f">Fwy</option>
+                        <option value="r">Rough</option>
+                        <option value="s">Sand</option>
+                        <option value="g">Green</option>
+                        <option value="h">Holed</option>
+                        <option value="p">Penalty</option>
+                        <option value="x">Recovery</option>
+                    </select></td>   
+                    <td class="sideTotal"></td>
+                    <td class="total"></td> 
+                </tr>
+            </tbody>
+            <!-- <tbody class="addNext">
+                <tr class="button">
+                    <th></th>
+                    <td><button class="add" id="hole10Add">+</button></td>
+                    <td><button class="next" id="hole10Next">>>></button></td>
+                    <td><button class="add" id="hole11Add">+</button></td>
+                    <td><button class="next" id="hole11Next">>>></button></td>
+                    <td><button class="add" id="hole12Add">+</button></td>
+                    <td><button class="next" id="hole12Next">>>></button></td>
+                    <td><button class="add" id="hole13Add">+</button></td>
+                    <td><button class="next" id="hole13Next">>>></button></td>
+                    <td><button class="add" id="hole14Add">+</button></td>
+                    <td><button class="next" id="hole14Next">>>></button></td>
+                    <td><button class="add" id="hole15Add">+</button></td>
+                    <td><button class="next" id="hole15Next">>>></button></td>
+                    <td><button class="add" id="hole16Add">+</button></td>
+                    <td><button class="next" id="hole16Next">>>></button></td>
+                    <td><button class="add" id="hole17Add">+</button></td>
+                    <td><button class="next" id="hole17Next">>>></button></td>
+                    <td><button class="add" id="hole18Add">+</button></td>
+                    <td><button class="next" id="hole18Next">>>></button></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+            </tbody> -->
+            <tbody class="back9Stats">
+                <tr class="score">
+                    <th>Score</th>
+                    <td id="hole10Score" colspan="2"></td>
+                    <td id="hole11Score" colspan="2"></td>
+                    <td id="hole12Score" colspan="2"></td>
+                    <td id="hole13Score" colspan="2"></td>
+                    <td id="hole14Score" colspan="2"></td>
+                    <td id="hole15Score" colspan="2"></td>
+                    <td id="hole16Score" colspan="2"></td>
+                    <td id="hole17Score" colspan="2"></td>
+                    <td id="hole18Score" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="vsPar">
+                    <th>+/-</th>
+                    <td id="vsParHole10" colspan="2"></td>
+                    <td id="vsParHole11" colspan="2"></td>
+                    <td id="vsParHole12" colspan="2"></td>
+                    <td id="vsParHole13" colspan="2"></td>
+                    <td id="vsParHole14" colspan="2"></td>
+                    <td id="vsParHole15" colspan="2"></td>
+                    <td id="vsParHole16" colspan="2"></td>
+                    <td id="vsParHole17" colspan="2"></td>
+                    <td id="vsParHole18" colspan="2"></td>
+                    <td id="vsParIn"></td>
+                    <td id="vsParTotal"></td>
+                </tr>
+
+                <tr class="expdScore">
+                    <th>Expected Score</th>                    
+                    <td id="expdScoreHole10" colspan="2"></td>
+                    <td id="expdScoreHole11" colspan="2"></td>
+                    <td id="expdScoreHole12" colspan="2"></td>
+                    <td id="expdScoreHole13" colspan="2"></td>
+                    <td id="expdScoreHole14" colspan="2"></td>
+                    <td id="expdScoreHole15" colspan="2"></td>
+                    <td id="expdScoreHole16" colspan="2"></td>
+                    <td id="expdScoreHole17" colspan="2"></td>
+                    <td id="expdScoreHole18" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="sg">
+                    <th id="sgHead">Strokes Gained</th>
+                    <td id="sgHole10" colspan="2"></td>
+                    <td id="sgHole11" colspan="2"></td>
+                    <td id="sgHole12" colspan="2"></td>
+                    <td id="sgHole13" colspan="2"></td>
+                    <td id="sgHole14" colspan="2"></td>
+                    <td id="sgHole15" colspan="2"></td>
+                    <td id="sgHole16" colspan="2"></td>
+                    <td id="sgHole17" colspan="2"></td>
+                    <td id="sgHole18" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="fwy">
+                    <th>FWY</th>
+                    <td id="fwyHole10" colspan="2"></td>
+                    <td id="fwyHole11" colspan="2"></td>
+                    <td id="fwyHole12" colspan="2"></td>
+                    <td id="fwyHole13" colspan="2"></td>
+                    <td id="fwyHole14" colspan="2"></td>
+                    <td id="fwyHole15" colspan="2"></td>
+                    <td id="fwyHole16" colspan="2"></td>
+                    <td id="fwyHole17" colspan="2"></td>
+                    <td id="fwyHole18" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <tr class="gir">
+                    <th>GIR</th>
+                    <td id="girHole1" colspan="2"></td>
+                    <td id="girHole2" colspan="2"></td>
+                    <td id="girHole3" colspan="2"></td>
+                    <td id="girHole4" colspan="2"></td>
+                    <td id="girHole5" colspan="2"></td>
+                    <td id="girHole6" colspan="2"></td>
+                    <td id="girHole7" colspan="2"></td>
+                    <td id="girHole8" colspan="2"></td>
+                    <td id="girHole9" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+                <!-- <tr class="nGir">
+                    <th>nGIR</th>
+                    <td id="nGirHole10" colspan="2"></td>
+                    <td id="nGirHole11" colspan="2"></td>
+                    <td id="nGirHole12" colspan="2"></td>
+                    <td id="nGirHole13" colspan="2"></td>
+                    <td id="nGirHole14" colspan="2"></td>
+                    <td id="nGirHole15" colspan="2"></td>
+                    <td id="nGirHole16" colspan="2"></td>
+                    <td id="nGirHole17" colspan="2"></td>
+                    <td id="nGirHole18" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr> -->
+                <tr class="putts">
+                    <th>Putts</th>
+                    <td id="puttsHole10" colspan="2"></td>
+                    <td id="puttsHole11" colspan="2"></td>
+                    <td id="puttsHole12" colspan="2"></td>
+                    <td id="puttsHole13" colspan="2"></td>
+                    <td id="puttsHole14" colspan="2"></td>
+                    <td id="puttsHole15" colspan="2"></td>
+                    <td id="puttsHole16" colspan="2"></td>
+                    <td id="puttsHole17" colspan="2"></td>
+                    <td id="puttsHole18" colspan="2"></td>
+                    <td class="sideTotal"></td>
+                    <td class="total"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <h5>Stats are still under development</h5>
+    <script src="index.js"></script>
+  </body>
+</html>

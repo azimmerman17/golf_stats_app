@@ -1,0 +1,136 @@
+input {
+    width: 48px;
+    text-align: center;
+    border: 0px;
+}
+
+table,
+th,
+td,
+tr {
+    border-spacing: 0px;
+    border: 1px solid black;
+    /* width: 50 px; */
+    gap: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+th {
+    width: 110px;
+}
+
+option {
+    text-align: center;
+}
+
+h1 {
+    background: #bc1e00;
+    text-align: center;
+    color: white;
+
+}
+
+select {
+    padding: 0px;
+    border: 0px;
+    background-color: #ffe599;
+}
+
+/* class  */
+.lie {
+    width: 40px;
+    text-align: center;
+}
+
+.inputPar {
+    width: 126.5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #006886;
+    padding: 0px;
+
+    
+}
+
+.out {
+    width: 100px;
+}
+
+.add {
+    background: slategray;
+    width: 48px;
+    color: #ffffff;
+}
+.add:hover {
+    background: slategray;
+    color: #ffffff;
+    width: 48px;
+    opacity: 50%;
+}
+
+.next {
+    background: slategray;
+    width: 76.5px;
+    color: #ffffff;
+}
+.next:hover {
+    background: slategray;
+    color: #ffffff;
+    opacity: 50%;
+
+}
+
+.front9shots,
+.back9shots {
+    background-color: #ffe599;
+}
+
+.input-shot {
+    width: 48px;
+    padding: 0px;
+    background-color: #ffe599;
+    text-align: right;
+}
+.hole {
+    background-color: #bc1e00;
+    color:#ffffff;
+
+}
+
+.sideTotal,
+.total {
+    width: 75px;
+}
+
+.par {
+    background-color:  #006886;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.score {
+    background-color: #4a6b1f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.vsPar {
+    background-color: #4a6b1f80;
+    font-weight: bold;
+}
+
+.expdScore {
+    background-color: #006886;
+    color: #ffffff;
+}
+
+.sg {
+    background-color: #00688680;
+    font-weight: bold;
+}
+
+/* id */ 
+#blankBack9Hole {
+    width: 110px;
+}
